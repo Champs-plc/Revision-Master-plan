@@ -1,0 +1,134 @@
+#%RAML 1.0 Library
+usage: craft-onlineshopping
+types:
+  categoriesresponseType:
+    description: get all categories
+    type: object
+    properties:
+      categoryid:
+        description: categoryid 
+        type: integer
+        required: true
+        example: 1
+      name: string 
+  createordersrequestType:
+    description: place orders
+    type: object
+    properties:
+      productid:
+        description: product id 
+        type: number
+        required: true
+        example: 1
+      quantity:
+        type: number
+        required: true
+        example: 1
+      uid:
+        type: number
+        required: true
+        example: 1
+  orderidresponseType:
+    description: 
+    type: object
+    properties:
+      addressid: string
+      amount: integer
+      created?: string | nil
+      date: integer
+      day: string
+      hours: string
+      minutes: integer
+      month: string
+      nanos: integer
+      seconds: number
+      time: string
+      timeZoneOffset: string
+      year: number
+      discountid: integer
+      modified?: string | nil
+      orderid: number
+      status: string
+      userid: number
+  productsResponseType:
+    description: get all products
+    type: object
+    properties:
+      categoryid: number
+      name: string
+      price: integer
+      productid: number
+      video_url: string
+  usersResponseType:
+    description: get all users
+    type: object
+    properties:
+      userid: number
+      email: 
+        description: user email
+        type: string
+        pattern: '[a-z0-9\._%+!&*=^|~#%{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,22})'
+      date_joined: integer
+      modified: integer
+      type: number
+      deleted: 
+        type: boolean
+        required: false
+      username: string
+  ForbiddenType:
+    description: user forbidden
+    type: object
+    properties:
+      statusCode:
+        description: HTTP forbidden response status code 
+        type: number
+        example: 403
+      message:
+        description: HTTP forbidden response message
+        type: string
+        example: "forbidden"
+  Not-FoundType:
+    description: request not found
+    type: object
+    properties:
+      statusCode:
+        description: HTTP not found response status code 
+        type: number
+        example: 404
+      message:
+        description: HTTP not found response message
+        type: string
+        example: "not found"
+  unauthorizedType:
+    description: user unauthorized
+    type: object
+    properties:
+      statusCode:
+        description: HTTP user unauthorized response status code 
+        type: number
+        example: 401
+      message:
+        description: HTTP not found response message
+        type: string
+        example: "unauthorized"
+  createresponseType:
+    description: create users response
+    type: object
+    properties:
+      statusCode:
+        description: HTTP created response status code
+        type: integer
+        example: 201
+      message:
+        description: HTTP created response message
+        type: string
+        example: "created"
+  createuserRequestType:
+    description: create user
+    type: object
+    properties:
+      email:
+        description: user email
+        type: string
+        pattern: '[a-z0-9\._%+!&*=^|~#%{}/\-]+@([a-z0-9\-]+\.){1,}([a-z]{2,22})'
+      username: string
